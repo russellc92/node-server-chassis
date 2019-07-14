@@ -14,5 +14,8 @@
     "node"
   ],
   "author": "Rclaxton",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.0.0"
+  }
 }
