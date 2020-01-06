@@ -7,11 +7,21 @@ jobs:
     name: nodes-app-install
     runs-on: ubuntu-latest
     
+    
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
     steps:
-      - uses: actions/checkout@master
-      - name: npm install
-        uses: actions/npm@master
-        with:
-          args: install
-      - name: Run a one-line script
-        run: echo done!
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install
+      run: |
+        npm ci
+      env:
+        CI: true
+    - name: Run a one-line script
+      run: echo done!
