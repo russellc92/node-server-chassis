@@ -1,0 +1,17 @@
+name: node-install
+
+on: push
+
+jobs:
+  build:
+    name: nodes-app-install
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@master
+      - name: npm install
+        uses: actions/npm@master
+        with:
+          args: install
+      - name: Run a one-line script
+        run: echo done!
